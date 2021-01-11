@@ -1,22 +1,22 @@
 # Application Supported Monitoring
 
-# Goals
+## Goals
 
 - Must be as similar as possible across applications
 - Must make it easier for Site Operations, Load Balancers and Monitors to monitor the application
 - Must have a minimum number of mandatory requirements
-- Must be simple to implement (see above)
+- Must be simple to implement
 - Must be contained in a simple directory structure so it is easy to block from external access
 
-# Why?
+## Why?
 
-Monitoring the many applications is quite a complex task. The behaviour of most of our applications is quite complex and it is often hard to find the sweet spot to monitor. It is nearly impossible to make a check hit a single URL to give an overall health of the application. These requirements have been designed to allow Site Operations to build a single monitoring check that can be used across the entire suite of applications. This way we can easily configure our LB to drop a misbehaving application server from seeing production traffic, or to automatically page a sysadmin when the application enters a degraded mode.
+Monitoring the many applications is quite a complex task. The behaviour of most applications is quite complex and it is often hard to find the sweet spot to monitor. It is nearly impossible to make a check hit a single URL to give an overall health of the application. These requirements have been designed to allow Site Operations to build a single monitoring check that can be used across the entire suite of applications. This way we can easily configure our LB to drop a misbehaving application server from seeing production traffic, or automatically page a sysadmin when the application enters a degraded mode.
 
-# How?
+## How?
 
-We propose a set of URLs with defined behaviours across all applications. By defining a singular set of URLs that can reuse the same monitoring scripts across the whole infrastructure and development can reuse the implementation code across multiple applications, every endpoint should include the host name or a similar unique id to help address the problem instance.
+We propose a set of URLs with defined behaviours across all applications. By defining a singular set of URLs that can reuse the same monitoring scripts across the whole infrastructure and development can reuse the implementation code across multiple applications, every endpoint should include the instance name or a similar unique id to help addressing the problem instance.
 
-# Required Endpoints
+### Required Endpoints
 
 | **URL**               | **Hitrate**                               | **Purpose**                                                  |
 | --------------------- | ----------------------------------------- | ------------------------------------------------------------ |
@@ -26,7 +26,7 @@ We propose a set of URLs with defined behaviours across all applications. By def
 | /diagnostic/readiness | often - tied to the probe's configuration | Contains a simple OK with HTTP 200 if all the checks are good, or the first error result with HTTP 500 if not.<br/>This indicates that the service is not workable because an external dependency has failed.<br/>**This checks the dependent resources only for this call, like there is a cluster, only checks the node which this request is routed to.<br/>This one should immediately return the error once it gets a failed check.<br/>K8s will remove the pod from the service pool, AWS ELB wouldn't help the situation if set this as the health check.** |
 | /diagnostic/version   | ad hoc                                    | Returns the version number of the application.               |
 
-# Optional Endpoints
+### Optional Endpoints
 
 | **URL**           | **Hitrate** | **Purpose**                                                 |
 | ------------------ | ------------ | ------------------------------------------------------------ |
