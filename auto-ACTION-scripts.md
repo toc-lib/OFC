@@ -2,9 +2,9 @@
 
 ## Goals
 
-- Encourage dev/ops to **capture management logic as scripts** in the code-base
-- Provide tech guys with **an obvious place to look** for management scripts
-- Make it **easy to list available management actions**
+- Encourage dev/ops to **capture management logic as scripts** in the code-base.
+- Provide tech guys with **an obvious place to look** for management scripts.
+- Make it **easy to list available management actions**.
 
 ## Why
 

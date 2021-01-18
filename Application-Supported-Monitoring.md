@@ -2,11 +2,11 @@
 
 ## Goals
 
-- Must be as similar as possible across applications
-- Must make it easier for Site Operations, Load Balancers and Monitors to monitor the application
-- Must have a minimum number of mandatory requirements
-- Must be simple to implement
-- Must be contained in a simple directory structure so it is easy to block from external access
+- Must be as similar as possible across applications.
+- Must make it easier for Site Operations, Load Balancers and Monitors to monitor the application.
+- Must have a minimum number of mandatory requirements.
+- Must be simple to implement.
+- Must be contained in a simple directory structure so it is easy to block from external access.
 
 ## Why?
 
