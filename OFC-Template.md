@@ -12,3 +12,6 @@ Why this doc is proposed?
 
 What to do can achive our goals?
 
+## FAQ
+
+If you have this section.
